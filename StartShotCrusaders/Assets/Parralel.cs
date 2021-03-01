@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿/*
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,3 +25,4 @@ public class Parralel : MonoBehaviour
         transform.position = startPosition + travel;
     }
 }
+*/
