@@ -47,9 +47,9 @@ public class EnemyOne : MonoBehaviour
         {
             if (!hasSetAngle)
             {
-                Vector2 dir = new Vector2(transform.position.x - testPlayer.position.x, transform.position.y - testPlayer.position.y);
+                float angle = Mathf.Atan2(shootPoint.position.x - testPlayer.position.x, shootPoint.position.y - testPlayer.position.y);
                 hasSetAngle = true;
-                transform.up = dir;
+                transform.rotation = Quaternion.Euler(0,0, angle);
                 
             }
             transform.Translate(transform.up * -9f * Time.deltaTime);
