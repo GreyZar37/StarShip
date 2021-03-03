@@ -15,6 +15,8 @@ public class PlayerHealth : MonoBehaviour
     public GameObject gameOver;
     public GameObject gameStart;
 
+    public ParticleSystem particle;
+
 
     // Start is called before the first frame update
     void Start()
@@ -38,9 +40,13 @@ public class PlayerHealth : MonoBehaviour
             healthImage3.SetActive(false);
             gameOver.SetActive(true);
             gameObject.SetActive(false);
+            particle.Play();
 
         }
 
-
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            currentHealth--;
+        }
     }
 }
