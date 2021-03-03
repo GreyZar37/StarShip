@@ -20,6 +20,7 @@ public class Bullet : MonoBehaviour
     }
     private void Update()
     {
+
         rb.velocity = transform.up * 25f;
 
         currentTimer -= Time.deltaTime;
@@ -28,6 +29,9 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        rb.velocity = transform.up * 9f;
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
