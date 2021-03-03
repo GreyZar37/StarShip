@@ -6,7 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
 
     public int maxHealth = 3;
-    public int currentHealth;
+    public static int currentHealth;
 
     public GameObject healthImage;
     public GameObject healthImage2;
