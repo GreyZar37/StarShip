@@ -6,6 +6,8 @@ public class Bullet : MonoBehaviour
 {
 
     public static int playerDamage;
+    public float bulletDestroyTime;
+    private float currentTimer;
 
 
     private Rigidbody2D rb;
@@ -13,11 +15,19 @@ public class Bullet : MonoBehaviour
 
     private void Awake()
     {
+        currentTimer = bulletDestroyTime;
         rb = GetComponent<Rigidbody2D>();
     }
     private void Update()
     {
         rb.velocity = transform.up * 25f;
+
+        currentTimer -= Time.deltaTime;
+
+        if(currentTimer <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
