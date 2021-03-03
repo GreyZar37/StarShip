@@ -47,9 +47,9 @@ public class EnemyOne : MonoBehaviour
         {
             if (!hasSetAngle)
             {
-                float angle = Mathf.Atan2(shootPoint.position.x - testPlayer.position.x, shootPoint.position.y - testPlayer.position.y);
+                Vector2 dir = new Vector2(shootPoint.position.x - testPlayer.position.x, shootPoint.position.y - testPlayer.position.y);
                 hasSetAngle = true;
-                transform.rotation = Quaternion.Euler(0,0, angle);
+                transform.up = dir;
                 
             }
             transform.Translate(transform.up * -9f * Time.deltaTime);
@@ -64,8 +64,8 @@ public class EnemyOne : MonoBehaviour
 
     void ShootBullet()
     {
-        Vector2 dir = new Vector2(shootPoint.position.x - testPlayer.position.x, shootPoint.position.y - testPlayer.position.y);
 
+        Vector2 dir = new Vector2(shootPoint.position.x - testPlayer.position.x, shootPoint.position.y - testPlayer.position.y);
         shootPoint.up = dir;
 
         Instantiate(bullet, shootPoint.position, Quaternion.Euler(0,0,180 + shootPoint.rotation.eulerAngles.z));
