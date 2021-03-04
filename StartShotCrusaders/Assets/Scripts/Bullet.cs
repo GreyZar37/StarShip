@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
     private void Update()
-    {
+    {   
         rb.velocity = transform.up * 9f;
 
 
