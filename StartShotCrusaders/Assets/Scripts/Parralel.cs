@@ -5,26 +5,29 @@ using UnityEngine;
 
 public class Parralel : MonoBehaviour
 {
-    public Camera cam;
-    public Transform subject;
-    private float startZ;
-    Vector2 startPosition;
-    Vector2 travel => (Vector2)cam.transform.position - startPosition;
-
-    float distanceFromSubject => transform.position.z - subject.position.z;
-    float clippingPlane => (cam.transform.position.z + (distanceFromSubject > 0 ? cam.farClipPlane : cam.nearClipPlane));
-    float parallaxFactor => Mathf.Abs(distanceFromSubject) / clippingPlane;
+    public Transform[] backgrounds;
+    private Camera cam;
     
 
     void Start()
     {
-        startPosition = transform.position;
-        startZ = transform.position.z;
+        cam = Camera.main;
     }
 
     void Update()
     {
-        Vector2 newPos = startPosition + travel * 0.9f;
-        transform.position = new Vector3(newPos.x, newPos.y, startZ);
+        backgrounds[0].Translate(-Vector3.up * 10f * Time.deltaTime);
+        backgrounds[1].Translate(-Vector3.up * 10f * Time.deltaTime);
+
+        if (backgrounds[0].position.y < -11.45f)
+        {
+            backgrounds[0].position = new Vector3(0, 12.7f, 0);
+
+        }
+        if (backgrounds[1].position.y < -11.45f)
+        {
+            backgrounds[1].position = new Vector3(0, 12.7f, 0);
+
+        }
     }
 }
