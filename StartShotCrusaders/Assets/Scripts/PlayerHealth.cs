@@ -15,18 +15,22 @@ public class PlayerHealth : MonoBehaviour
     public GameObject gameOver;
     public GameObject gameStart;
 
-    public ParticleSystem particle;
+    public GameObject particle;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        particle = GameObject.FindGameObjectWithTag("Particle");
         currentHealth = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        particle.transform.position = gameObject.transform.position;
+
         if(currentHealth == 2)
         {
             healthImage.SetActive(false);
@@ -40,7 +44,7 @@ public class PlayerHealth : MonoBehaviour
             healthImage3.SetActive(false);
             gameOver.SetActive(true);
             gameObject.SetActive(false);
-            particle.Play();
+            particle.GetComponent<ParticleSystem>().Play();
 
         }
 
