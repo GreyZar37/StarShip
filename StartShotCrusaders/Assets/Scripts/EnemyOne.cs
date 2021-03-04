@@ -7,6 +7,7 @@ public class EnemyOne : MonoBehaviour
     private Vector2 limitYPos = new Vector2(0, 3.5f);
     public Transform shootPoint;
     public Transform testPlayer;
+    Vector3 playerPos;
     public GameObject bullet;
 
     private float fireRate;
@@ -15,7 +16,7 @@ public class EnemyOne : MonoBehaviour
     public float shootTime = 5f;
     bool canShoot;
     bool hasSetAngle;
-    void Start()
+    void Awake()
     {
         shootTime = 5f;
         fireRate = constfireRate;
@@ -40,19 +41,22 @@ public class EnemyOne : MonoBehaviour
                     ShootBullet();
                 }
                 shootTime -= Time.deltaTime;
-
+                
             }
         }
         else
         {
             if (!hasSetAngle)
             {
-                Vector2 dir = new Vector2(shootPoint.position.x - testPlayer.position.x, shootPoint.position.y - testPlayer.position.y);
+                playerPos = testPlayer.transform.position;
+                Vector3 direction = playerPos - transform.position;
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
                 hasSetAngle = true;
-                transform.up = dir;
+                print(angle);
+                transform.eulerAngles = Vector3.forward * angle;
                 
             }
-            transform.Translate(transform.up * -9f * Time.deltaTime);
+            transform.Translate(-Vector3.up * -9f * Time.deltaTime);
         }
         
         if(transform.position.y < -7f)
@@ -64,10 +68,10 @@ public class EnemyOne : MonoBehaviour
 
     void ShootBullet()
     {
-
-        Vector2 dir = new Vector2(shootPoint.position.x - testPlayer.position.x, shootPoint.position.y - testPlayer.position.y);
-        shootPoint.up = dir;
-
-        Instantiate(bullet, shootPoint.position, Quaternion.Euler(0,0,180 + shootPoint.rotation.eulerAngles.z));
+        Vector3 direction = testPlayer.position - shootPoint.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
+        shootPoint.eulerAngles = Vector3.forward * angle;
+        Debug.DrawRay(shootPoint.position, direction, Color.green);
+        Instantiate(bullet, shootPoint.position, Quaternion.Euler(0,0, shootPoint.eulerAngles.z));
     }
 }
