@@ -7153,8 +7153,9 @@ GameObject:
   - component: {fileID: 2078613852}
   - component: {fileID: 2078613853}
   - component: {fileID: 2078613854}
-  - component: {fileID: 2078613855}
   - component: {fileID: 2078613856}
+  - component: {fileID: 2078613857}
+  - component: {fileID: 2078613855}
   m_Layer: 0
   m_Name: StarShip
   m_TagString: Untagged
@@ -7298,8 +7299,8 @@ MonoBehaviour:
   firePoint: {fileID: 1549917394}
   bulletForce: 15
   playerCoolDowntimer: 0.5
---- !u!61 &2078613855
-BoxCollider2D:
+--- !u!58 &2078613855
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -7312,18 +7313,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.84375, y: 0.90625}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.84375, y: 0.90625}
-  m_EdgeRadius: 0
+  m_Radius: 0.453125
 --- !u!114 &2078613856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7343,3 +7334,24 @@ MonoBehaviour:
   gameOver: {fileID: 222324345}
   gameStart: {fileID: 980125310}
   particle: {fileID: 0}
+--- !u!114 &2078613857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078613848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17988c5c013ba3244a7c41cb3d35b682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewRadius: 0
+  viewAngle: 0
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 0
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
+  visibleTargets: []
