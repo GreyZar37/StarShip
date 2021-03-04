@@ -18,6 +18,7 @@ public class EnemyOne : MonoBehaviour
     bool hasSetAngle;
     void Awake()
     {
+        testPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         shootTime = 5f;
         fireRate = constfireRate;
     }
@@ -52,7 +53,7 @@ public class EnemyOne : MonoBehaviour
                 Vector3 direction = playerPos - transform.position;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
                 hasSetAngle = true;
-                print(angle);
+               
                 transform.eulerAngles = Vector3.forward * angle;
                 
             }
