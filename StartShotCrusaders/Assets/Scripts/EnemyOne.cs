@@ -10,14 +10,18 @@ public class EnemyOne : MonoBehaviour
     Vector3 playerPos;
     public GameObject bullet;
 
+    public float random_xPos;
+
     private float fireRate;
-    public const float constfireRate = 0.25f;
+    public const float constfireRate = 0.6f;
 
     public float shootTime = 5f;
     bool canShoot;
     bool hasSetAngle;
+    
     void Awake()
     {
+        random_xPos = Random.Range(-7.5f, 7.5f);
         testPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         shootTime = 5f;
         fireRate = constfireRate;
@@ -29,7 +33,7 @@ public class EnemyOne : MonoBehaviour
         fireRate -= Time.deltaTime;
         if(transform.position.y > 3.5f && !hasSetAngle)
         {
-           transform.position = new Vector2(0, Mathf.Lerp(transform.position.y, 3.5f, 8 * Time.deltaTime));
+          transform.position = new Vector2(random_xPos, Mathf.Lerp(transform.position.y, 3.5f, 8 * Time.deltaTime));
         }
         if(shootTime > 0f)
         {
