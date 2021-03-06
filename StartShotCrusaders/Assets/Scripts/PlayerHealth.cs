@@ -29,6 +29,7 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
 
+        print(currentHealth);
         particle.transform.position = gameObject.transform.position;
 
         if(currentHealth == 2)

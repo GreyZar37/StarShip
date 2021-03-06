@@ -8,7 +8,7 @@ public class ColliderScript : MonoBehaviour
     public float viewRadius;
     public float viewAngle = 360;
 
-    public LayerMask targetMask;
+    public LayerMask interactable;
     public Collider[] targetsinRange;
     
 
@@ -26,7 +26,7 @@ public class ColliderScript : MonoBehaviour
 
     void Collision()
     {
-        targetsinRange = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
+        targetsinRange = Physics.OverlapSphere(transform.position, viewRadius, interactable);
 
         for (int i = 0; i < targetsinRange.Length; i++)
         {
@@ -41,9 +41,38 @@ public class ColliderScript : MonoBehaviour
 
                 RaycastHit hit;
 
-                if(!Physics.Raycast (transform.position,  dirToTarget, out hit, distToTarget, targetMask))
+                if(!Physics.Raycast (transform.position,  dirToTarget, out hit, distToTarget, interactable))
                 {
-                    Destroy(targetsinRange[i].gameObject);
+
+                    if (targetsinRange[i].gameObject.tag == "Enemies" && transform.gameObject.tag == "Player")
+                    {
+                        Destroy(targetsinRange[i].gameObject);
+
+
+                        PlayerHealth.currentHealth--;
+                        print("NIGGA moment");
+
+                   
+                    }
+                   
+                    else if (targetsinRange[i].gameObject.tag == "Enemies" && transform.gameObject.tag == "Bullet")
+                    {
+                        Destroy(targetsinRange[i].gameObject);
+                        Destroy(transform.gameObject);
+
+                        print("NIGGA Enemy");
+                    }
+                    else if (targetsinRange[i].gameObject.tag == "Player" && transform.gameObject.tag == "Bullet")
+                    {
+                        Destroy(targetsinRange[i].gameObject);
+                        print("NIGGA bullet");
+
+                        PlayerHealth.currentHealth--;
+
+                        
+                    }
+
+                    
                 }
             }
         }

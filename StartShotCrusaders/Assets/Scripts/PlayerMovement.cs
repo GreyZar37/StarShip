@@ -6,8 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
 
     public float playerSpeed = 5f;
-    Vector2 movement;
-    public Rigidbody2D rb;
+    Vector3 movement;
+    public Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()

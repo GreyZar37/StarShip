@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Particle
+  - Bullet
+  - Undefined
+  - Enemies
   layers:
   - Default
   - TransparentFX
@@ -17,7 +20,7 @@ TagManager:
   - Walls
   - Enemies
   - Player
-  - 
+  - interactable
   - 
   - 
   - 
