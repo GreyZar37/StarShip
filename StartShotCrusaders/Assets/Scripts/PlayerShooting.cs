@@ -9,6 +9,7 @@ public class PlayerShooting : MonoBehaviour
     public Transform firePoint;
     public float bulletForce = 20f;
 
+    public AudioSource soundEffect;
 
     float currentTimer;
     public float playerCoolDowntimer = 1.5f;
@@ -27,6 +28,7 @@ public class PlayerShooting : MonoBehaviour
         {
             shoot();
             currentTimer = playerCoolDowntimer;
+            soundEffect.Play();
         }
 
         void shoot()

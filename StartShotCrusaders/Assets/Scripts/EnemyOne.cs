@@ -18,11 +18,20 @@ public class EnemyOne : MonoBehaviour
     public float shootTime = 5f;
     bool canShoot;
     bool hasSetAngle;
-    
+
+
     void Awake()
     {
+
+       
+
         random_xPos = Random.Range(-7.5f, 7.5f);
-        testPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+
+        
+        
+            testPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        
+        
         shootTime = 5f;
         fireRate = constfireRate;
     }

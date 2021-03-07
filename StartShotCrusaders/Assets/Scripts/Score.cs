@@ -24,7 +24,7 @@ public class Score : MonoBehaviour
     void Update()
     {
         scoreTextIngame.text = "Score: " + score.ToString();
-
+        scoreTextOutgame.text = "Score: " + score.ToString();
 
 
     }

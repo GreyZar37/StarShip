@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,9 +101,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 4380369210144286085}
   testPlayer: {fileID: 0}
-  bullet: {fileID: 6793790735998213119, guid: e55b966dc6ac90e45917f9ffad02c9cf, type: 3}
+  bullet: {fileID: 6793790735998213119, guid: 4e573cd81696146448f38a13422549d2, type: 3}
   random_xPos: 0
   shootTime: 5
+  boomSound: {fileID: 0}
 --- !u!114 &-2976643300351561036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,12 +117,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17988c5c013ba3244a7c41cb3d35b682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 0.5
+  viewRadius: 0.1
   viewAngle: 360
   interactable:
     serializedVersion: 2
     m_Bits: 2048
   targetsinRange: []
+  bulletprefab: {fileID: 0}
+  boomSound: {fileID: 0}
 --- !u!65 &5678986959124340725
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -130,7 +133,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4380369209576708905}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}

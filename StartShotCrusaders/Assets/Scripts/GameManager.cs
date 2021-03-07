@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public void restart()
     {
         SceneManager.LoadScene(0);
+        Score.score = 0;
     }
     public void exit()
     {

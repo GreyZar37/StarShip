@@ -10,12 +10,16 @@ public class ColliderScript : MonoBehaviour
 
     public LayerMask interactable;
     public Collider[] targetsinRange;
-    
+
+    public GameObject bulletprefab;
+
+
+    public GameObject boomSound;
 
     public void Start()
     {
-        
 
+        boomSound = GameObject.FindGameObjectWithTag("Sound");
     }
 
     private void Update()
@@ -46,28 +50,29 @@ public class ColliderScript : MonoBehaviour
 
                     if (targetsinRange[i].gameObject.tag == "Enemies" && transform.gameObject.tag == "Player")
                     {
-                        Destroy(targetsinRange[i].gameObject);
+                      Destroy(targetsinRange[i].gameObject);
 
 
-                        PlayerHealth.currentHealth--;
-                        print("NIGGA moment");
+                       PlayerHealth.currentHealth--;
+                      
 
-                   
                     }
                    
                     else if (targetsinRange[i].gameObject.tag == "Enemies" && transform.gameObject.tag == "Bullet")
                     {
                         Destroy(targetsinRange[i].gameObject);
                         Destroy(transform.gameObject);
+                        boomSound.GetComponent<AudioSource>().Play();
+                        Score.score++;
+                        
 
-                        print("NIGGA Enemy");
                     }
-                    else if (targetsinRange[i].gameObject.tag == "Player" && transform.gameObject.tag == "Bullet")
+                    else if (targetsinRange[i].gameObject.tag == "Player" && transform.gameObject.tag == "EnemyBullet")
                     {
-                        Destroy(targetsinRange[i].gameObject);
-                        print("NIGGA bullet");
 
-                        PlayerHealth.currentHealth--;
+
+                       Destroy(gameObject);
+                       PlayerHealth.currentHealth--;
 
                         
                     }

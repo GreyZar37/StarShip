@@ -10,13 +10,13 @@ public class Bullet : MonoBehaviour
     private float currentTimer;
 
 
-    private Rigidbody2D rb;
+    private Rigidbody rb;
 
 
     private void Awake()
     {
         currentTimer = bulletDestroyTime;
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
     }
     private void Update()
     {   

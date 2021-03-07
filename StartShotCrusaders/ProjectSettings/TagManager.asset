@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - Undefined
   - Enemies
+  - EnemyBullet
+  - Sound
   layers:
   - Default
   - TransparentFX

@@ -27,5 +27,29 @@ public class Astroide : MonoBehaviour
         float z = 0;
 
         transform.position = new Vector3(x + playerX, y + playerY, z);
+
+        if(PlayerHealth.currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    
+    private void OnTriggerEnter(Collider other)
+    {
+
+
+        if (other.gameObject.CompareTag("Enemies"))
+        {
+            Destroy(other.gameObject);
+            Score.score++;
+        }
+
+        if (other.gameObject.CompareTag("EnemyBullet"))
+        {
+            Destroy(other.gameObject);
+        }
+
+
     }
 }
